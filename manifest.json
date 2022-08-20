@@ -1,0 +1,46 @@
+{
+  "description": "Dongrami(동그라미)는 트위터의 서클기능을 임의로 활성화합니다.",
+  "manifest_version": 3,
+  "name": "Dongrami",
+  "author": "Gaeulbyul <aeiou256@gmail.com>",
+  "version": "0.0.0.1",
+  "version_name": "0.0.0.1 [MV3]",
+  "homepage_url": "https://github.com/gaeulbyul/Dongrami",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "64": "icons/icon-64.png",
+    "128": "icons/icon-128.png"
+  },
+
+  "host_permissions": ["https://twitter.com/*", "https://mobile.twitter.com/*"],
+
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://mobile.twitter.com/*"],
+      "exclude_matches": [
+        "https://*.twitter.com/about",
+        "https://*.twitter.com/download",
+        "https://*.twitter.com/intent/*",
+        "https://*.twitter.com/privacy",
+        "https://*.twitter.com/tos",
+        "https://*.twitter.com/*/privacy",
+        "https://*.twitter.com/*/tos"
+      ],
+      "run_at": "document_idle",
+      "js": ["loader.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "https://twitter.com/*",
+        "https://mobile.twitter.com/*",
+        "https://tweetdeck.twitter.com/*"
+      ],
+      "resources": [
+        "dongrami.js"
+      ]
+    }
+  ]
+}
